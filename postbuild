@@ -135,4 +135,4 @@ fs.createReadStream(program.input)
 .pipe(replaceStream(/(<!\-\- inject:css \-\->)([\s\S]*?)(<!\-\- endinject \-\->)/gm, replaceCss))
 .pipe(replaceStream(/(<!\-\- inject:git\-hash \-\->)/gm, injectHash))
 .pipe(replaceStream(regex, ''))
-.pipe(fs.createWriteStream(program.output));
+.pipe(fs.createWriteStream(program.output, {flags: 'r+'}));
